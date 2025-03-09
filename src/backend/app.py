@@ -6,20 +6,16 @@ from api.home_routes import home_api_bp
 from utils.error_handling import handle_internal_server_error
 from utils.logging_config import configure_logging
 
-app = Flask(__name__)
-
-
-@app.errorhandler(Exception)
-def handle_custom_error(e):
-    response = jsonify({'error': str(e)})
-    response.status_code = 500
-    return response
-
 
 def create_app():
 
-    # Register the error handlers
-    app.register_error_handler(Exception, handle_custom_error)
+    app = Flask(__name__)
+
+    # Configure logging
+    configure_logging(app)
+
+    # Register error handlers
+    app.register_error_handler(Exception, handle_internal_server_error)
 
     app.logger.info("Starting Chat Completions API")
 
