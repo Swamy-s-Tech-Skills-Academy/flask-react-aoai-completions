@@ -19,7 +19,7 @@ def create_app():
     # Register the error handlers
     app.register_error_handler(Exception, handle_custom_error)
 
-    app.logger.info("Starting Gimmicks Travels API")
+    app.logger.info("Starting Chat Completions API")
 
     # Register the home_api_bp blueprint
     app.register_blueprint(home_api_bp, name='home_route_direct')
@@ -30,12 +30,12 @@ def create_app():
 
 # # Create the app and run it during development (.\app.py)
 if __name__ == "__main__":
-    print("Starting Python Flask Server For Gimmicks Travels API")
+    print("Starting Python Flask Server For Chat Completions API")
     app = create_app()
     app.run(host='0.0.0.0', port=5009, debug=True)  # During development
 
 # # For production deployment, comment out the above lines and use the one below (Flask run)
 # # This can also be used for development while running the app from Debug mode in VS Code
-# print("Starting Python Flask Server For Gimmicks Travels API using Flask run")
+# print("Starting Python Flask Server For Chat Completions API using Flask run")
 # app = create_app()
 # app.run()  # In production

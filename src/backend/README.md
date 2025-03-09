@@ -5,7 +5,7 @@ A Simple Python Flask API to interact with Azure OpenAI.
 ## 🔹 Installation & Setup
 
 ```bash
-python --version 
+python --version
 pip --version
 
 pip install virtualenv
@@ -22,6 +22,62 @@ pip freeze > requirements.txt
 ```bash
 pip install -r requirements.txt
 ```
+
+## 🔹 Project Structure
+
+```text
+flask-react-aoai-completions/
+│── docs/
+│── src/
+│   ├── backend/
+│   │   ├── api/ (Routes)
+│   │   ├── services/ (Azure OpenAI Integration)
+│   │   ├── utils/ (Configs & Logging)
+│   │   ├── app.py
+│── .gitignore
+│── README.md
+```
+
+## 🔹 How to Execute
+
+### ✅ Method 1: Run `app.py` Directly
+
+```powershell
+python .\app.py
+```
+
+This will start the Flask server, and you should see output like:
+
+```
+Starting Flask Azure OpenAI API Server...
+ * Running on http://127.0.0.1:5009/ (Press CTRL+C to quit)
+```
+
+Now, visit `[http://127.0.0.1:5009/api/](http://127.0.0.1:5009/api/)` in your browser.
+
+---
+
+### ✅ Method 2: Use `flask run` (Requires Setting Environment Variables)
+
+Before running the app, set environment variables:
+
+```powershell
+$env:FLASK_APP = "app"
+$env:FLASK_ENV = "development"
+flask run --host=0.0.0.0 --port=5009
+```
+
+This will also start the Flask server.
+
+---
+
+### **Stopping the Server**
+
+Press **CTRL + C** in the PowerShell terminal to stop the server.
+
+---
+
+🚀 **Try it out and let me know if you need any help!** 😃
 
 ---
 

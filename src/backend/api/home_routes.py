@@ -15,7 +15,7 @@ def home():
     # Simulate an error by raising an exception
     # raise Exception("This is a simulated error")
 
-    return jsonify({'data': 'Welcome to Gimmicks Travels - Python Flask API!'}), 200
+    return jsonify({'data': 'Welcome to Chat Completions - Python Flask API!'}), 200
 
 # Define an error handler for the custom exception
 
