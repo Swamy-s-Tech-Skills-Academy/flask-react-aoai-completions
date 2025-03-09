@@ -25,20 +25,39 @@ def get_completion_stream(prompt):
     """
     Calls Azure OpenAI API and streams responses.
     """
+
+    # Prepare the chat prompt
+    chat_prompt = [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information."
+        },
+        {"role": "user", "content": prompt}
+    ]
+
     try:
-        stream = client.chat.completions.create(
-            messages=[{"role": "user", "content": prompt}],
-            model=deployment_name,  # Azure uses a deployment name instead of model name
-            stream=True,
+        response = client.chat.completions.create(
+            model=deployment_name,
+            messages=chat_prompt,
+            max_tokens=800,
+            temperature=0.7,
+            top_p=0.95,
+            frequency_penalty=0,
+            presence_penalty=0,
+            stop=None,
+            stream=False
         )
 
-        if not hasattr(stream, "choices"):
-            yield "Error: No response from OpenAI API"
-            return
+        print(response.choices[0].message.content)
+        print(response.to_json()) # ✅ Added to print the response
 
-        for chunk in stream:
-            text = chunk.choices[0].delta.content if chunk.choices and chunk.choices[0].delta.content else ""
-            yield text  # Yielding chunks for streaming
+        # if not hasattr(stream, "choices"):
+        #     yield "Error: No response from OpenAI API"
+        #     return
+
+        # for chunk in stream:
+        #     text = chunk.choices[0].delta.content if chunk.choices and chunk.choices[0].delta.content else ""
+        #     yield text  # Yielding chunks for streaming
 
     except Exception as e:
         yield f"Error: {str(e)}"
