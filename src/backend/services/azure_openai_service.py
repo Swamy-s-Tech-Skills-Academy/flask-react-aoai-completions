@@ -1,24 +1,34 @@
 import os
 from openai import OpenAI
-from flask import stream_with_context
+from flask import Response, stream_with_context
 
-# Ensure API key is set
-api_key = os.environ.get("AZ_OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("AZ_OPENAI_API_KEY environment variable is missing!")
+# Load environment variables
+api_key = os.getenv("AZURE_OPENAI_API_KEY")
+endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+deployment_name = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME")
+api_version = os.getenv("AZURE_OPENAI_API_VERSION")
 
-client = OpenAI(api_key=api_key)
+if not api_key or not endpoint or not deployment_name or not api_version:
+    raise ValueError("Azure OpenAI environment variables are missing!")
+
+# Create an OpenAI client with Azure API settings
+client = OpenAI(
+    api_key=api_key,
+    base_url=f"{endpoint}/openai/deployments/{deployment_name}",
+    default_headers={"api-key": api_key}
+)
 
 
-def get_completion_stream(prompt, model="gpt-35-turbo-16k"):
+def get_completion_stream(prompt):
     """
-    Calls OpenAI API synchronously and streams responses.
+    Calls Azure OpenAI API and streams responses.
     """
     try:
         stream = client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
-            model=model,
+            model=deployment_name,  # Azure uses a deployment name instead of model name
             stream=True,
+            api_version=api_version  # Required for Azure
         )
 
         for chunk in stream:
