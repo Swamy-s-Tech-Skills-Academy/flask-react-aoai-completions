@@ -48,7 +48,7 @@ python .\app.py
 
 This will start the Flask server, and you should see output like:
 
-```
+```text
 Starting Flask Azure OpenAI API Server...
  * Running on http://127.0.0.1:5009/ (Press CTRL+C to quit)
 ```

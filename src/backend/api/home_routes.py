@@ -1,6 +1,7 @@
 # File: home_routes.py
 
-from flask import Blueprint, current_app, jsonify
+import os
+from flask import Blueprint, current_app, jsonify, send_from_directory
 
 home_api_bp = Blueprint('home_api_bp', __name__)
 
@@ -17,11 +18,7 @@ def home():
 
     return jsonify({'data': 'Welcome to Chat Completions - Python Flask API!'}), 200
 
-# Define an error handler for the custom exception
 
-
-# @home_api_bp.errorhandler(Exception)
-# def handle_custom_error(e):
-#     response = jsonify({'error': str(e)})
-#     response.status_code = 500  # You can set the appropriate status code
-#     return response
+@home_api_bp.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(home_api_bp.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
