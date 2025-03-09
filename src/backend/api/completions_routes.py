@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify, Response, stream_with_context
-from services.azure_openai_service import get_completion_stream
+from services.azure_openai_service import fetch_completion_response
 
 completions_api_bp = Blueprint("completions_api_bp", __name__)
 
@@ -17,6 +17,6 @@ def generate_completion():
     prompt = data["prompt"]
 
     return Response(
-        stream_with_context(get_completion_stream(prompt)),
+        stream_with_context(fetch_completion_response(prompt)),
         content_type="text/event-stream"
     )
