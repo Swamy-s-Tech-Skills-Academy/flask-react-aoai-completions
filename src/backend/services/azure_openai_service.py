@@ -1,6 +1,6 @@
 import os
 from openai import AzureOpenAI
-from flask import Response, stream_with_context
+from flask import Response
 from utils.env_config import get_config_value
 
 # Load environment variables
@@ -21,9 +21,9 @@ client = AzureOpenAI(
 )
 
 
-def get_completion_stream(prompt):
+def fetch_openai_response(prompt):
     """
-    Calls Azure OpenAI API synchronously and yields responses.
+    Calls Azure OpenAI API synchronously and returns a full response.
     """
     chat_prompt = [
         {"role": "system", "content": "You are an AI assistant that helps people find information."},
@@ -40,28 +40,25 @@ def get_completion_stream(prompt):
             frequency_penalty=0,
             presence_penalty=0,
             stop=None,
-            stream=False  # ✅ Disable streaming for synchronous processing
+            stream=False  # ✅ Not streaming, returns full response
         )
 
         # ✅ Print response for debugging
         print(response)
 
-        # ✅ Yield response text chunk-by-chunk
         if response.choices:
-            # ✅ Get full response as a single chunk
-            yield response.choices[0].message.content
+            # ✅ Return full response
+            return response.choices[0].message.content
 
     except Exception as e:
-        yield f"Error: {str(e)}"
+        return f"Error: {str(e)}"
 
 
-def stream_response(prompt):
+def generate_response(prompt):
     """
     Flask-compatible synchronous response.
     """
     return Response(
-        stream_with_context(get_completion_stream(prompt)
-                            ),  # ✅ Flask Sync Streaming
-        # ✅ Changed from `text/event-stream` to `text/plain` for sync mode
+        fetch_openai_response(prompt),  # ✅ Now returning a full response
         content_type="text/plain"
     )
