@@ -3,9 +3,9 @@ from openai import OpenAI
 from flask import stream_with_context
 
 # Ensure API key is set
-api_key = os.environ.get("AZURE_OPENAI_API_KEY")
+api_key = os.environ.get("AZ_OPENAI_API_KEY")
 if not api_key:
-    raise ValueError("AZURE_OPENAI_API_KEY environment variable is missing!")
+    raise ValueError("AZ_OPENAI_API_KEY environment variable is missing!")
 
 client = OpenAI(api_key=api_key)
 
