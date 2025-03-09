@@ -11,8 +11,8 @@ pip --version
 pip install virtualenv
 python -m pip install --upgrade pip
 python -m venv .venv
-
 .venv/Scripts/activate
+
 pip install Flask python-dotenv openai
 pip freeze > requirements.txt
 ```
