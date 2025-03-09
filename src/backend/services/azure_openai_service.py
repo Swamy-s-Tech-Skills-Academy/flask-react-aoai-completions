@@ -13,7 +13,7 @@ api_version = get_config_value(
 if not api_key or not endpoint or not deployment_name or not api_version:
     raise ValueError("Azure OpenAI environment variables are missing!")
 
-# Correct Azure OpenAI client setup
+# ✅ Correct Azure OpenAI client setup (Synchronous)
 client = AzureOpenAI(
     api_key=api_key,
     azure_endpoint=endpoint,  # ✅ Corrected
@@ -23,15 +23,10 @@ client = AzureOpenAI(
 
 def get_completion_stream(prompt):
     """
-    Calls Azure OpenAI API and streams responses.
+    Calls Azure OpenAI API synchronously and yields responses.
     """
-
-    # Prepare the chat prompt
     chat_prompt = [
-        {
-            "role": "system",
-            "content": "You are an AI assistant that helps people find information."
-        },
+        {"role": "system", "content": "You are an AI assistant that helps people find information."},
         {"role": "user", "content": prompt}
     ]
 
@@ -45,22 +40,16 @@ def get_completion_stream(prompt):
             frequency_penalty=0,
             presence_penalty=0,
             stop=None,
-            stream=True
+            stream=False  # ✅ Disable streaming for synchronous processing
         )
 
-        # print(response.choices[0].message.content)
-        # print(response.to_json())  # ✅ Added to print the response
+        # ✅ Print response for debugging
+        print(response)
 
-        # if not hasattr(stream, "choices"):
-        #     yield "Error: No response from OpenAI API"
-        #     return
-
-        #    ✅ Stream chunks to the client
-        for chunk in response:
-            if hasattr(chunk, "choices") and chunk.choices:
-                delta = chunk.choices[0].delta
-                if hasattr(delta, "content") and delta.content:
-                    yield delta.content  # ✅ Send chunked text to the client
+        # ✅ Yield response text chunk-by-chunk
+        if response.choices:
+            # ✅ Get full response as a single chunk
+            yield response.choices[0].message.content
 
     except Exception as e:
         yield f"Error: {str(e)}"
@@ -68,10 +57,11 @@ def get_completion_stream(prompt):
 
 def stream_response(prompt):
     """
-    Flask-compatible streaming response.
+    Flask-compatible synchronous response.
     """
     return Response(
         stream_with_context(get_completion_stream(prompt)
-                            ),  # ✅ Flask Streaming
-        content_type="text/event-stream"
+                            ),  # ✅ Flask Sync Streaming
+        # ✅ Changed from `text/event-stream` to `text/plain` for sync mode
+        content_type="text/plain"
     )
