@@ -1,3 +1,5 @@
+# File: home_routes.py
+
 from flask import Blueprint, current_app, jsonify
 
 home_api_bp = Blueprint('home_api_bp', __name__)
