@@ -1,6 +1,5 @@
 import os
 from openai import AzureOpenAI
-from flask import Response, stream_with_context
 from utils.env_config import get_config_value
 
 # Load environment variables
