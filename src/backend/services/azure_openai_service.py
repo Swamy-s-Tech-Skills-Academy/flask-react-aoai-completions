@@ -45,19 +45,22 @@ def get_completion_stream(prompt):
             frequency_penalty=0,
             presence_penalty=0,
             stop=None,
-            stream=False
+            stream=True
         )
 
-        print(response.choices[0].message.content)
-        print(response.to_json()) # ✅ Added to print the response
+        # print(response.choices[0].message.content)
+        # print(response.to_json())  # ✅ Added to print the response
 
         # if not hasattr(stream, "choices"):
         #     yield "Error: No response from OpenAI API"
         #     return
 
-        # for chunk in stream:
-        #     text = chunk.choices[0].delta.content if chunk.choices and chunk.choices[0].delta.content else ""
-        #     yield text  # Yielding chunks for streaming
+        #    ✅ Stream chunks to the client
+        for chunk in response:
+            if hasattr(chunk, "choices") and chunk.choices:
+                delta = chunk.choices[0].delta
+                if hasattr(delta, "content") and delta.content:
+                    yield delta.content  # ✅ Send chunked text to the client
 
     except Exception as e:
         yield f"Error: {str(e)}"
@@ -68,6 +71,7 @@ def stream_response(prompt):
     Flask-compatible streaming response.
     """
     return Response(
-        stream_with_context(get_completion_stream(prompt)),
+        stream_with_context(get_completion_stream(prompt)
+                            ),  # ✅ Flask Streaming
         content_type="text/event-stream"
     )
