@@ -1,7 +1,6 @@
 import os
 from openai import OpenAI
-from flask import Response, stream_with_context
-from asgiref.sync import async_to_sync
+from flask import stream_with_context
 
 # Ensure API key is set
 api_key = os.environ.get("AZURE_OPENAI_API_KEY")
@@ -11,10 +10,9 @@ if not api_key:
 client = OpenAI(api_key=api_key)
 
 
-def get_completion_stream(prompt, model="gpt-4o"):
+def get_completion_stream(prompt, model="gpt-35-turbo-16k"):
     """
-    Calls OpenAI API and streams responses.
-    Flask doesn't support async, so we handle it synchronously.
+    Calls OpenAI API synchronously and streams responses.
     """
     try:
         stream = client.chat.completions.create(
@@ -29,14 +27,3 @@ def get_completion_stream(prompt, model="gpt-4o"):
 
     except Exception as e:
         yield f"Error: {str(e)}"
-
-
-def stream_response(prompt):
-    """
-    Flask-compatible streaming response.
-    Uses `stream_with_context()` to handle response streaming properly.
-    """
-    return Response(
-        stream_with_context(get_completion_stream(prompt)),
-        content_type="text/event-stream"
-    )
