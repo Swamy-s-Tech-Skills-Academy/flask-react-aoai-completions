@@ -69,6 +69,14 @@ flask run --host=0.0.0.0 --port=5009
 
 This will also start the Flask server.
 
+```powershell
+Invoke-RestMethod -Uri "http://127.0.0.1:5009/api/completions" `
+                  -Method POST `
+                  -Headers @{"Content-Type"="application/json"} `
+                  -Body '{"prompt": "Tell me a joke"}'
+
+```
+
 ---
 
 ### **Stopping the Server**
