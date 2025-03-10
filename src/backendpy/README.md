@@ -9,9 +9,9 @@ python --version
 pip --version
 
 pip install virtualenv
-python -m pip install --upgrade pip
 python -m venv .venv
 .venv/Scripts/activate
+python -m pip install --upgrade pip
 
 pip install Flask python-dotenv openai
 pip freeze > requirements.txt
@@ -73,7 +73,7 @@ This will also start the Flask server.
 Invoke-RestMethod -Uri "http://127.0.0.1:5009/api/completions" `
                   -Method POST `
                   -Headers @{"Content-Type"="application/json"} `
-                  -Body '{"prompt": "Tell me a joke"}'
+                  -Body '{"prompt": "What is an Orange"}'
 
 ```
 
