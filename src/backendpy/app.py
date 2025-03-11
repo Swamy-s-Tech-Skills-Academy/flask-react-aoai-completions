@@ -1,5 +1,6 @@
 # File: app.py
 
+import os
 from flask import Flask, jsonify
 
 from api.home_routes import home_api_bp
@@ -9,6 +10,11 @@ from api.completions_routes import completions_api_bp
 
 app = Flask(__name__)
 
+# ✅ Ensure logs directory exists
+LOG_DIR = "logs"
+if not os.path.exists(LOG_DIR):
+    os.makedirs(LOG_DIR)
+    print(f"✅ Created logs directory: {LOG_DIR}")
 
 @app.errorhandler(Exception)
 def handle_custom_error(e):

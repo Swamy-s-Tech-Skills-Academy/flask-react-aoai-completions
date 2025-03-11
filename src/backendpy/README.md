@@ -44,6 +44,7 @@ flask-react-aoai-completions/
 
 ```powershell
 python .\app.py
+py .\app.py
 ```
 
 This will start the Flask server, and you should see output like:
