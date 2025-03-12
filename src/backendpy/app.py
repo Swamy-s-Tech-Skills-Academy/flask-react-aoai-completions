@@ -2,6 +2,7 @@
 
 import os
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 from api.home_routes import home_api_bp
 # from utils.error_handling import handle_internal_server_error
@@ -9,6 +10,7 @@ from utils.logging_config import configure_logging
 from api.completions_routes import completions_api_bp
 
 app = Flask(__name__)
+CORS(app)
 
 # ✅ Ensure logs directory exists
 LOG_DIR = "logs"
