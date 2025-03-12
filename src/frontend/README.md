@@ -25,7 +25,7 @@ npm create vite@latest cgpt-clone-gaih
 cd cgpt-clone-gaih
 
 # Install Tailwind CSS
-npm install -D tailwindcss postcss autoprefixer
+npm install -D tailwindcss@3 postcss autoprefixer
 npx tailwindcss init -p
 ```
 
