@@ -14,6 +14,7 @@ python -m venv .venv
 python -m pip install --upgrade pip
 
 pip install Flask python-dotenv openai
+pip install flask-cors
 pip freeze > requirements.txt
 ```
 
