@@ -19,10 +19,10 @@ Run the following **PowerShell** commands:
 
 ```powershell
 # Create a new Vite + React + TypeScript project
-npm create vite@latest react-chat-ts --template react-ts
+npm create vite@latest cgpt-clone-gaih
 
 # Move into the project folder
-cd react-chat-ts
+cd cgpt-clone-gaih
 
 # Install Tailwind CSS
 npm install -D tailwindcss postcss autoprefixer
