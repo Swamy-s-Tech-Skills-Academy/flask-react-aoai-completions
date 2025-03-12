@@ -4,10 +4,10 @@ const Header: React.FC = () => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
     return (
-        <header className="bg-blue-600 text-white min-h-[50px] flex justify-between items-center px-4 shadow-md font-inter">
-            <h1 className="text-xl font-bold">ChatGPT Clone</h1>
+        <header className="bg-blue-600 text-white h-12 flex justify-between items-center px-4 shadow-md font-inter">
+            <h1 className="text-xl font-bold tracking-wide">ChatGPT Clone</h1>
             <button
-                className="bg-white text-blue-600 px-4 py-1 rounded"
+                className="bg-white text-blue-600 px-4 py-1 rounded transition duration-200 hover:bg-gray-200 active:scale-95"
                 onClick={() => setIsLoggedIn(!isLoggedIn)}
             >
                 {isLoggedIn ? "Logout" : "Login"}
