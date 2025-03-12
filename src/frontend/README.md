@@ -1,21 +1,10 @@
 # React + TypeScript + Vite
 
-Got it! We'll build the **React UI with TypeScript and Tailwind CSS**, and integrate it with our **Flask API (Azure OpenAI backend).**
+Some Description.
 
----
+## 📌 Step 1: Set Up the React + TypeScript Project
 
-## ✅ **Project Plan**
-
-✔ **Header** – Shows **Login/Logout** (Auth0 integration later).  
-✔ **Main Content Area** – Chat UI to interact with Flask API.  
-✔ **Footer** – Simple branding/info section.  
-✔ **Integration with Flask** – Calls the `/api/completions` endpoint.
-
----
-
-## **📌 Step 1: Set Up the React + TypeScript Project**
-
-Run the following **PowerShell** commands:
+Run the following `PowerShell` commands:
 
 ```powershell
 # Create a new Vite + React + TypeScript project
@@ -29,11 +18,9 @@ npm install -D tailwindcss@3 postcss autoprefixer
 npx tailwindcss init -p
 ```
 
----
+## 📌 Step 2: Configure Tailwind
 
-## **📌 Step 2: Configure Tailwind**
-
-Modify **`tailwind.config.ts`**:
+### Modify `tailwind.config.ts`
 
 ```ts
 export default {
@@ -45,13 +32,30 @@ export default {
 };
 ```
 
-Then, update **`src/index.css`**:
+### Update `src/index.css`
 
 ```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 ```
+
+---
+
+Got it! We'll build the **React UI with TypeScript and Tailwind CSS**, and integrate it with our **Flask API (Azure OpenAI backend).**
+
+---
+
+## ✅ **Project Plan**
+
+✔ **Header** – Shows **Login/Logout** (Auth0 integration later).  
+✔ **Main Content Area** – Chat UI to interact with Flask API.  
+✔ **Footer** – Simple branding/info section.  
+✔ **Integration with Flask** – Calls the `/api/completions` endpoint.
+
+---
+
+---
 
 ---
 
