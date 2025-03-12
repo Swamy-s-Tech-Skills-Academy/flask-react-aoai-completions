@@ -23,9 +23,21 @@ npx tailwindcss init -p
 ### Modify `tailwind.config.ts`
 
 ```ts
+/** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    container: {
+      center: true,
+      padding: "1rem",
+      screens: {
+        sm: "100%",
+        md: "100%",
+        lg: "1200px",
+        xl: "1500px",
+        "2xl": "1600px",
+      },
+    },
     extend: {},
   },
   plugins: [],
