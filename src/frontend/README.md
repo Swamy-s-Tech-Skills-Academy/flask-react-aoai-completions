@@ -15,6 +15,7 @@ cd cgpt-clone-gaih
 
 # Install Tailwind CSS
 npm install -D tailwindcss@3 postcss autoprefixer
+npm install @heroicons/react
 npx tailwindcss init -p
 ```
 
