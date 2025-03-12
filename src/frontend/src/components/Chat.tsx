@@ -14,6 +14,11 @@ const Chat: React.FC = () => {
                 body: JSON.stringify({ prompt }),
             });
 
+            if(!res.ok) {
+                setResponse("⚠️ Error fetching response.");
+                return;
+            }
+
             const data = await res.text();
             setResponse(data);
         } catch (error) {
