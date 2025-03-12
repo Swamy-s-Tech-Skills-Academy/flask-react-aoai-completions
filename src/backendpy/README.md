@@ -23,6 +23,12 @@ pip freeze > requirements.txt
 pip install -r requirements.txt
 ```
 
+## Update the .env file
+
+```PowerShell
+$env:AZURE_OPENAI_API_KEY
+```
+
 ## 🔹 Project Structure
 
 ```text
