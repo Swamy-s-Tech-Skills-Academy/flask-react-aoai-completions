@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
+    fontFamily: {
+      inter: ["Inter", "sans-serif"],
+    },
     container: {
       center: true,
       padding: '1rem', // Optional: adds horizontal padding
