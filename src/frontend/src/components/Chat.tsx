@@ -31,13 +31,20 @@ const Chat: React.FC = () => {
     };
 
     return (
-        <div className="font-inter p-6 text-center w-full max-w-2xl mx-auto space-y-4">
+        <div className="font-inter p-6 text-center w-full max-w-6xl mx-auto space-y-4">
             <h2 className="text-2xl font-semibold mb-4 text-gray-800">
                 Chat with AI 🤖
             </h2>
 
-            <div className="bg-gray-700 text-white p-4 rounded-lg shadow-md text-left border-2 border-blue-800">
+            {/* <div className="bg-gray-700 text-white p-4 rounded-lg shadow-md text-left border-2 border-blue-800">
                 <p className="text-base font-light leading-relaxed">
+                    {response}
+                </p>
+            </div> */}
+
+            <div className="bg-gray-700 text-white p-4 rounded-lg shadow-md text-left border-2 border-blue-800 
+                overflow-y-auto max-h-64">
+                <p className="whitespace-pre-wrap break-words">
                     {response}
                 </p>
             </div>
