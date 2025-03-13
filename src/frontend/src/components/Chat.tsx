@@ -31,7 +31,7 @@ const Chat: React.FC = () => {
     };
 
     return (
-        <div className="bg-gray-50 font-inter p-6 text-center w-full max-w-6xl mx-auto space-y-4 border-2 border-gray-400 rounded-lg shadow-md">
+        <div className=" font-inter p-6 text-center w-full max-w-6xl mx-auto space-y-4 border-2 border-gray-400 rounded-lg shadow-md">
             <h2 className="text-2xl font-semibold mb-4 text-gray-800">
                 Chat with AI 🤖
             </h2>
