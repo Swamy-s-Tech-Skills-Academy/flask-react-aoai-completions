@@ -36,12 +36,6 @@ const Chat: React.FC = () => {
                 Chat with Azure OpenAI 🤖
             </h2>
 
-            {/* <div className="bg-gray-700 text-white p-4 rounded-lg shadow-md text-left border-2 border-blue-800">
-                <p className="text-base font-light leading-relaxed">
-                    {response}
-                </p>
-            </div> */}
-
             <div className="bg-gray-700 text-white p-4 rounded-lg shadow-md text-left border-2 border-blue-800 
                 overflow-y-auto max-h-64 custom-scrollbar">
                 <p className="whitespace-pre-wrap break-words">
