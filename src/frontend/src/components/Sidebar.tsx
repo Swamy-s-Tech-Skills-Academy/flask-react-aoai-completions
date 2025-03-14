@@ -1,13 +1,15 @@
 import React from "react";
-import { PlusIcon } from "@heroicons/react/24/solid";
-// import LucideIcons from "lucide-react";
+import {
+    faPlus,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Sidebar: React.FC = () => {
     return (
         <aside className="bg-gray-300 w-64 flex flex-col text-white p-4">
             {/* New Chat Button */}
             <button className="flex items-center bg-gray-500 hover:bg-gray-700 transition-colors duration-200 py-2 px-4 rounded mb-4 font-semibold w-full">
-                <PlusIcon className="h-5 w-5 mr-2" />
+                <FontAwesomeIcon icon={faPlus} />
                 <span>New Chat</span>
             </button>
 
