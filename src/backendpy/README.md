@@ -30,7 +30,7 @@ pip install -r requirements.txt
 
 ## Update the environment variable `AZURE_OPENAI_API_KEY`
 
-> 1. After updating verify the `AZURE_OPENAI_API_KEY`
+> 1. After updating verify the `AZURE_OPENAI_API_KEY`. **Only for INTERNAL USE.**
 
 ```PowerShell
 $env:AZURE_OPENAI_API_KEY
