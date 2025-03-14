@@ -31,9 +31,9 @@ const Chat: React.FC = () => {
     };
 
     return (
-        <div className="font-inter p-6 text-center w-full max-w-6xl mx-auto space-y-4">
+        <div className=" font-inter p-6 text-center w-full max-w-6xl mx-auto space-y-4 border-2 border-gray-400 rounded-lg shadow-md">
             <h2 className="text-2xl font-semibold mb-4 text-gray-800">
-                Chat with AI 🤖
+                Chat with Azure OpenAI 🤖
             </h2>
 
             {/* <div className="bg-gray-700 text-white p-4 rounded-lg shadow-md text-left border-2 border-blue-800">
@@ -61,8 +61,8 @@ const Chat: React.FC = () => {
 
             <button
                 onClick={sendRequest}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md 
-                   hover:bg-blue-700 transition transform hover:scale-105"
+                className="bg-gray-500 text-white px-6 py-2 rounded-lg shadow-md 
+                   hover:bg-gray-800 transition transform hover:scale-105"
             >
                 🚀 Send
             </button>
