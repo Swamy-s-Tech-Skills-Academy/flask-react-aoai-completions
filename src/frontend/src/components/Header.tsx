@@ -4,7 +4,7 @@ const Header: React.FC = () => {
     // const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
     return (
-        <header className="bg-gray-50 text-gray-800 h-12 flex justify-between items-center px-4 shadow-md border-b border-gray-400 font-inter">
+        <header className="bg-gray-50 text-gray-800 h-8 flex justify-between items-center px-4 shadow-md border-b border-gray-400 font-inter">
             <h1 className="text-xl font-bold tracking-wide">Single Turn ChatGPT Clone</h1>
             {/* <button
                 className="bg-white text-blue-600 px-4 py-1 rounded transition duration-200 hover:bg-gray-200 active:scale-95"

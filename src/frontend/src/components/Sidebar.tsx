@@ -1,5 +1,6 @@
 import React from "react";
 import { PlusIcon } from "@heroicons/react/24/solid";
+// import LucideIcons from "lucide-react";
 
 const Sidebar: React.FC = () => {
     return (
@@ -23,8 +24,14 @@ const Sidebar: React.FC = () => {
                 </div>
             </div>
 
+            <button className="mt-4 bg-emerald-500 hover:bg-emerald-600 py-2 px-4 rounded font-semibold w-full">
+                {/* <LucideIcons.LogIn size={18} /> */}
+                Login
+            </button>
+
             {/* Logout Button at Bottom */}
-            <button className="mt-4 bg-red-500 hover:bg-red-700 transition-colors duration-200 py-2 px-4 rounded font-semibold">
+            <button className="mt-4 bg-red-500 hover:bg-red-600 transition-colors duration-200 py-2 px-4 rounded font-semibold">
+                {/* <LucideIcons.LogOut size={18} /> */}
                 Logout
             </button>
         </aside>
