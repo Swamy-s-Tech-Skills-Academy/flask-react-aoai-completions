@@ -1,4 +1,4 @@
-const BASE_URL = "http://127.0.0.1:5009/api"; // Adjust as needed
+const BASE_URL = "http://127.0.0.1:5009/api"; // Adjust this as needed
 
 export const fetchAIResponse = async (prompt: string): Promise<string> => {
     try {
@@ -9,12 +9,12 @@ export const fetchAIResponse = async (prompt: string): Promise<string> => {
         });
 
         if (!res.ok) {
-            throw new Error("Error fetching response. Please try again later.");
+            throw new Error("⚠️ Error fetching response. Please try again later.");
         }
 
         return await res.text();
     } catch (error) {
         console.error("API Error:", error);
-        return "❌ Error fetching response.";
+        return error instanceof Error ? `🚨 Error fetching response: ${error.message}` : "❌ Error fetching response.";
     }
 };

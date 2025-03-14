@@ -11,28 +11,6 @@ const Chat: React.FC = () => {
         const result = await fetchAIResponse(prompt);
 
         setResponse(result);
-
-        // try {
-        //     const res = await fetch("http://127.0.0.1:5009/api/completions", {
-        //         method: "POST",
-        //         headers: { "Content-Type": "application/json" },
-        //         body: JSON.stringify({ prompt }),
-        //     });
-
-        //     if (!res.ok) {
-        //         setResponse("⚠️ Error fetching response. Please try again later.");
-        //         return;
-        //     }
-
-        //     const data = await res.text();
-        //     setResponse(data);
-        // } catch (error: unknown) {
-        //     if (error instanceof Error) {
-        //         setResponse(`🚨 Error fetching response: ${error.message}`);
-        //     } else {
-        //         setResponse("❌ Error fetching response.");
-        //     }
-        // }
     };
 
     return (
